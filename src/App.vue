@@ -1,7 +1,16 @@
 <script setup>
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+import { useCounterStore } from "@/store/index.js";
 import HelloWorld from "./components/HelloWorld.vue";
+
+const store = useCounterStore();
+
+function plus() {
+  console.log("plus");
+  useCounterStore().increment();
+}
+// useCounterStore();
 </script>
 
 <template>
@@ -12,8 +21,12 @@ import HelloWorld from "./components/HelloWorld.vue";
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
+  </div> -->
+  <button @click="plus()">Плюс</button>
+  <div>
+    {{ store.count }}
   </div>
-  <HelloWorld msg="Vite + Vue" /> -->
+  <!-- <HelloWorld msg="Vite + Vue" /> -->
   <h1 class="text-3xl font-bold underline">Hello world!</h1>
 </template>
 
@@ -22,6 +35,7 @@ import HelloWorld from "./components/HelloWorld.vue";
   height: 6em;
   padding: 1.5em;
   will-change: filter;
+  
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
